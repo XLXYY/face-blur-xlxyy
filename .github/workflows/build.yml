@@ -37,11 +37,22 @@ jobs:
         run: |
           pip install buildozer cython
 
-      - name: Download face models (will be packaged into APK)
+      - name: Download face models
         run: |
           mkdir -p models
           wget -O models/yunet.onnx https://github.com/opencv/opencv_zoo/raw/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx
           wget -O models/sface.onnx https://github.com/opencv/opencv_zoo/raw/main/models/face_recognition_sface/face_recognition_sface_2021dec.onnx
+
+      # ---------- 关键修复：手动下载 SDL2_image 到缓存目录 ----------
+      - name: Pre-download SDL2_image to avoid build stuck
+        run: |
+          SDL2_IMAGE_URL="https://github.com/libsdl-org/SDL_image/releases/download/release-2.8.2/SDL2_image-2.8.2.tar.gz"
+          CACHE_DIR="/home/runner/.buildozer/cache"
+          mkdir -p "$CACHE_DIR"
+          echo "Downloading SDL2_image..."
+          wget -q "$SDL2_IMAGE_URL" -O "$CACHE_DIR/SDL2_image-2.8.2.tar.gz"
+          echo "SDL2_image cached."
+      # ----------------------------------------------------------
 
       - name: Build APK
         run: |
