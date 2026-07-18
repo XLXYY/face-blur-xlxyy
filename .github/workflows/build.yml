@@ -18,7 +18,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'   # 改为 3.10
+          python-version: '3.10'
 
       - name: Install system dependencies
         run: |
@@ -33,11 +33,11 @@ jobs:
           sudo rm -rf /usr/local/lib/android/sdk
           unset ANDROID_HOME ANDROID_SDK_ROOT ANDROID_NDK_HOME ANDROID_NDK_ROOT
 
-      - name: Install Buildozer (latest stable from PyPI, works with Python 3.10)
+      - name: Install Buildozer
         run: |
           pip install buildozer cython
 
-      - name: Download face models
+      - name: Download face models (will be packaged into APK)
         run: |
           mkdir -p models
           wget -O models/yunet.onnx https://github.com/opencv/opencv_zoo/raw/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx
