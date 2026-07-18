@@ -16,6 +16,9 @@ android.ndk = 25b
 android.archs = arm64-v8a
 android.accept_sdk_license = True
 android.build_tools_version = 34.0.0
+# 下面两行是新增的：强制生成 APK 而不是 AAB
+android.build_mode = debug
+android.release_artifact = apk
 android.gradle_dependencies = 
 p4a.branch = develop
 p4a.bootstrap = sdl2
