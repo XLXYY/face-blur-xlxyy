@@ -33,9 +33,9 @@ jobs:
           sudo rm -rf /usr/local/lib/android/sdk
           unset ANDROID_HOME ANDROID_SDK_ROOT ANDROID_NDK_HOME ANDROID_NDK_ROOT
 
-      - name: Install Buildozer
+      - name: Install Buildozer (latest master to support AAB/APK properly)
         run: |
-          pip install buildozer cython
+          pip install git+https://github.com/kivy/buildozer.git@master cython
 
       - name: Download face models
         run: |
