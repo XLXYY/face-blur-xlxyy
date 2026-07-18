@@ -19,10 +19,8 @@ android.build_tools_version = 34.0.0
 android.build_mode = debug
 android.release_artifact = apk
 android.gradle_dependencies = 
-p4a.branch = master              # 改回 master，更稳定
+p4a.branch = master
 p4a.bootstrap = sdl2
 p4a.ndk_version = 25b
-
 icon.filename = %(source.dir)s/icon.png
-
 ios.kivy_ios_branch = master
